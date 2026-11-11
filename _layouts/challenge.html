@@ -9,7 +9,7 @@ section: challenge
 <section class="challenge-head">
   <p class="eyebrow"><a href="{{ '/challenges/' | relative_url }}">Monthly challenges</a> · {{ page.month }}</p>
   <h1 class="reading-title">{{ page.title }}</h1>
-  <p class="lede">{{ page.description }}</p>
+  <p class="lede">{{ page.description }}{% if page.by %} By {{ page.by }}.{% endif %}</p>
   <div class="progress" role="img" aria-label="{{ done }} of {{ total }} prompts done">
     {%- for p in page.prompts -%}{%- assign hit = entries | where: "day", forloop.index | first -%}<span class="pip{% if hit %} on{% endif %}"></span>{%- endfor -%}
     <span class="progress-text">{{ done }} of {{ total }} done</span>
@@ -22,10 +22,10 @@ section: challenge
     <span class="day">Day {{ forloop.index }}</span>
     {%- if hit -%}
     <a class="prompt-thumb" href="{{ hit.url | relative_url }}"><img src="{{ '/photos/' | append: hit.photo | relative_url }}" alt="" loading="lazy"></a>
-    <div class="prompt-text"><p class="prompt-q">{{ p }}</p><p class="prompt-ans"><a href="{{ hit.url | relative_url }}">{{ hit.title }}</a> · {{ hit.date | date: "%-d %b" }}</p></div>
+    <div class="prompt-text">{% if p.question %}<p class="prompt-theme">{{ p.theme }}</p><p class="prompt-q">{{ p.question }}</p>{% else %}<p class="prompt-q">{{ p }}</p>{% endif %}<p class="prompt-ans"><a href="{{ hit.url | relative_url }}">{{ hit.title }}</a> · {{ hit.date | date: "%-d %b" }}</p></div>
     {%- else -%}
     <span class="prompt-thumb empty" aria-hidden="true">☾</span>
-    <div class="prompt-text"><p class="prompt-q">{{ p }}</p><p class="prompt-ans muted">Not done yet</p></div>
+    <div class="prompt-text">{% if p.question %}<p class="prompt-theme">{{ p.theme }}</p><p class="prompt-q">{{ p.question }}</p>{% else %}<p class="prompt-q">{{ p }}</p>{% endif %}<p class="prompt-ans muted">Not done yet</p></div>
     {%- endif -%}
   </li>
 {%- endfor -%}

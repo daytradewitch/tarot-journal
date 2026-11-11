@@ -12,7 +12,7 @@ layout: default
   {%- if page.challenge -%}
     {%- assign ch = site.challenges | where: "slug", page.challenge | first -%}
     {%- if ch -%}{%- assign di = page.day | minus: 1 -%}
-    <p class="prompt-line">Day {{ page.day }} of <a href="{{ ch.url | relative_url }}">{{ ch.title }}</a>: <em>{{ ch.prompts[di] }}</em></p>
+    <p class="prompt-line">Day {{ page.day }} of <a href="{{ ch.url | relative_url }}">{{ ch.title }}</a>: {% assign cp = ch.prompts[di] %}{% if cp.question %}{{ cp.theme }}. <em>{{ cp.question }}</em>{% else %}<em>{{ cp }}</em>{% endif %}</p>
     {%- endif -%}
   {%- endif -%}
   {%- if page.photo -%}

@@ -11,7 +11,7 @@ cards:
   - Present: Two of Cups (reversed)
   - Future: The Star
 # For a challenge entry, also add these two lines (and set category: challenge):
-# challenge: shadow-work-november
+# challenge: november-transformation
 # day: 5
 ---
 Your notes and reflections go here. Write as much or as little as you like.

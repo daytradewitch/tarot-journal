@@ -50,8 +50,9 @@ If a tag has a colon in it, put quotes around it: `"11:11"`.
 
 ## Monthly challenges
 
-Each challenge is one file in `_challenges/` with a list of prompts (see `shadow-work-november.md`).
-To answer a prompt, write a reading with `category: challenge`, `challenge: shadow-work-november` and `day: 5`.
+Each challenge is one file in `_challenges/` with a list of prompts (see `november-transformation.md`).
+A prompt can be a plain question, or a `theme` plus a `question`.
+To answer a prompt, write a reading with `category: challenge`, `challenge: november-transformation` and `day: 5`.
 The challenge page ticks off each day you've done and shows your photo next to it.
 
 ## Change the look
