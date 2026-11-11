@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────
+#  Your tarot journal settings
+# ─────────────────────────────────────────────
+title: Moon & Paper
+tagline: A tarot journal
+author: Helen
+
+# Look of the site: "moody" (dark), "soft" (light) or "island" (cozy, bright)
+look: moody
+
+# Ask Google and other search engines not to list your journal.
+# Anyone who has the link can still read it.
+hide_from_search: true
+
+# Your GitHub "username/repository". Used for the "Post" page buttons.
+github_repo: daytradewitch/tarot-journal
+
+# Must match the repository name, with a slash in front.
+# If your site lives at your-username.github.io/tarot-journal, keep this as is.
+baseurl: /tarot-journal
+
+# Labels for the tabs. Add more categories here any time.
+categories_info:
+  daily:
+    label: Daily readings
+    short: Daily
+  challenge:
+    label: Monthly challenges
+    short: Challenge
+
+# ── You don't need to change anything below ──
+permalink: /readings/:year/:month/:day/:title/
+markdown: kramdown
+collections:
+  challenges:
+    output: true
+    permalink: /challenges/:name/
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: reading }
+  - scope: { path: "", type: challenges }
+    values: { layout: challenge }
+exclude:
+  - README.md
+  - NEW-READING-TEMPLATE.md
+  - .github

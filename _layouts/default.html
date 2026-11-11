@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-look="{{ site.look | default: 'moody' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% if site.hide_from_search %}<meta name="robots" content="noindex, nofollow, noimageindex, noarchive">{% endif %}
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{%- if site.look == "island" -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:ital,wght@0,500;0,700;1,500&display=swap">
+{%- else -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
+{%- endif %}
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark" aria-hidden="true">{% if site.look == "island" %}✿{% else %}☾{% endif %}</span>
+      <span class="brand-name">{{ site.title }}</span>
+      <span class="brand-tag">{{ site.tagline }}</span>
+    </a>
+    <nav class="tabs" aria-label="Sections">
+      {% assign sec = page.section | default: '' %}
+      <a href="{{ '/' | relative_url }}"{% if sec == 'all' %} aria-current="page"{% endif %}>All</a>
+      <a href="{{ '/daily/' | relative_url }}"{% if sec == 'daily' %} aria-current="page"{% endif %}>Daily</a>
+      <a href="{{ '/challenges/' | relative_url }}"{% if sec == 'challenge' %} aria-current="page"{% endif %}>Challenges</a>
+      <a href="{{ '/cards/' | relative_url }}"{% if sec == 'cards' %} aria-current="page"{% endif %}>Cards</a>
+      <a href="{{ '/tags/' | relative_url }}"{% if sec == 'tags' %} aria-current="page"{% endif %}>Tags</a>
+      <a href="{{ '/archive/' | relative_url }}"{% if sec == 'archive' %} aria-current="page"{% endif %}>Archive</a>
+      <a class="tab-post" href="{{ '/post/' | relative_url }}"{% if sec == 'post' %} aria-current="page"{% endif %}>+ Post</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+{{ content }}
+</main>
+<footer class="wrap foot">{{ site.title }} · kept by {{ site.author }}</footer>
+<script src="{{ '/assets/journal.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+---
+layout: default
+title: Monthly challenges
+section: challenge
+---
+<div class="page-head">
+  <h1 class="page-title">Monthly challenges</h1>
+  <p class="page-sub">A set of prompts for the month, one reading per prompt</p>
+</div>
+<div class="ch-list">
+{%- assign chs = site.challenges | reverse -%}
+{%- for ch in chs -%}{% include challenge-strip.html challenge=ch %}{%- endfor -%}
+</div>
+<h2 class="section-title">Latest challenge entries</h2>
+<div class="feed">
+{%- for r in site.categories.challenge -%}{% include reading-card.html reading=r %}{%- endfor -%}
+</div>

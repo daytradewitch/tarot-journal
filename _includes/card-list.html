@@ -1,0 +1,16 @@
+{%- comment -%} Renders the cards of a reading. include.reading, include.style = "chips" | "full" {%- endcomment -%}
+{%- for item in include.reading.cards -%}
+  {%- if item.first -%}{%- assign pos = item.first[0] -%}{%- assign raw = item.first[1] -%}{%- else -%}{%- assign pos = "" -%}{%- assign raw = item -%}{%- endif -%}
+  {%- assign name = raw | replace: " (reversed)", "" | replace: "(reversed)", "" | strip -%}
+  {%- if raw contains "reversed" -%}{%- assign rev = true -%}{%- else -%}{%- assign rev = false -%}{%- endif -%}
+  {%- assign slug = name | slugify -%}
+  {%- if include.style == "full" -%}
+  <li class="pos-row">
+    <span class="pos-label">{{ pos }}</span>
+    <a class="pos-card" href="{{ '/cards/' | relative_url }}#{{ slug }}">{{ name }}</a>
+    {%- if rev %}<span class="rev" title="Reversed">reversed</span>{% endif %}
+  </li>
+  {%- else -%}
+  <a class="chip" href="{{ '/cards/' | relative_url }}#{{ slug }}">{{ name }}{% if rev %} <span class="rev-mark" title="Reversed">↺</span>{% endif %}</a>
+  {%- endif -%}
+{%- endfor -%}

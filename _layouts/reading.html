@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{%- assign cat = page.categories | first -%}
+{%- if cat == 'challenge' -%}{%- assign section = 'challenge' -%}{%- else -%}{%- assign section = 'daily' -%}{%- endif -%}
+<article class="reading">
+  <p class="eyebrow">
+    <a href="{% if page.challenge %}{{ '/challenges/' | append: page.challenge | append: '/' | relative_url }}{% else %}{{ '/daily/' | relative_url }}{% endif %}">{{ site.categories_info[cat].label | default: cat }}</a>
+    · <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%A %-d %B %Y" }}</time>
+  </p>
+  <h1 class="reading-title">{{ page.title }}</h1>
+  {%- if page.challenge -%}
+    {%- assign ch = site.challenges | where: "slug", page.challenge | first -%}
+    {%- if ch -%}{%- assign di = page.day | minus: 1 -%}
+    <p class="prompt-line">Day {{ page.day }} of <a href="{{ ch.url | relative_url }}">{{ ch.title }}</a>: <em>{{ ch.prompts[di] }}</em></p>
+    {%- endif -%}
+  {%- endif -%}
+  {%- if page.photo -%}
+  <figure class="reading-photo"><img src="{{ '/photos/' | append: page.photo | relative_url }}" alt="Photo of the spread for {{ page.title }}" width="1200" height="900"></figure>
+  {%- endif -%}
+  <div class="reading-grid">
+    <aside class="spread-box">
+      {%- if page.question -%}<p class="q-label">Question</p><p class="question">{{ page.question }}</p>{%- endif -%}
+      <p class="q-label">{{ page.spread | default: "The cards" }}</p>
+      <ol class="positions">{% include card-list.html reading=page style="full" %}</ol>
+      {%- if page.deck -%}<p class="deck">Deck: {{ page.deck }}</p>{%- endif -%}
+      {%- if page.tags.size > 0 -%}<p class="q-label tags-label">Tags</p><div class="tags">{% include tag-list.html reading=page %}</div>{%- endif -%}
+    </aside>
+    <div class="notes">{{ content }}</div>
+  </div>
+  <nav class="pager">
+    {%- if page.previous -%}<a class="pager-prev" href="{{ page.previous.url | relative_url }}"><span>Earlier</span>{{ page.previous.title }}</a>{%- else -%}<span></span>{%- endif -%}
+    {%- if page.next -%}<a class="pager-next" href="{{ page.next.url | relative_url }}"><span>Later</span>{{ page.next.title }}</a>{%- endif -%}
+  </nav>
+</article>

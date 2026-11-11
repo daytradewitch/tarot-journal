@@ -1,0 +1,1 @@
+{%- for t in include.reading.tags -%}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ t | slugify }}">#{{ t }}</a>{%- endfor -%}

@@ -1,0 +1,12 @@
+---
+layout: default
+title: Daily readings
+section: daily
+---
+<div class="page-head">
+  <h1 class="page-title">Daily readings</h1>
+  <p class="page-sub">{{ site.categories.daily | size }} entries</p>
+</div>
+<div class="feed">
+{%- for r in site.categories.daily -%}{% include reading-card.html reading=r %}{%- endfor -%}
+</div>

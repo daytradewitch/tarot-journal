@@ -1,0 +1,13 @@
+---
+layout: default
+section: all
+---
+<div class="page-head">
+  <h1 class="page-title">Every reading</h1>
+  <p class="page-sub">{{ site.posts | size }} entries, newest first</p>
+</div>
+{%- assign latest_ch = site.challenges | sort: "date" | last -%}
+{%- if latest_ch -%}{% include challenge-strip.html challenge=latest_ch %}{%- endif -%}
+<div class="feed">
+{%- for r in site.posts -%}{% include reading-card.html reading=r %}{%- endfor -%}
+</div>

@@ -1,0 +1,27 @@
+---
+layout: default
+title: Post a reading
+section: post
+---
+<div class="page-head">
+  <h1 class="page-title">Post a reading</h1>
+  <p class="page-sub">Two steps, both work from your phone. You need to be signed in to GitHub.</p>
+</div>
+<ol class="steps">
+  <li class="step">
+    <h2>Upload your photo</h2>
+    <p>Pick the photo of your spread. Big phone photos are fine; the site shrinks them and strips location data automatically.</p>
+    <a class="btn" href="https://github.com/{{ site.github_repo }}/upload/main/photos" target="_blank" rel="noopener">Upload photo</a>
+    <p class="hint">Note the file name it shows, for example <code>IMG_4021.jpg</code>.</p>
+  </li>
+  <li class="step">
+    <h2>Write the reading</h2>
+    <p>This opens a new entry already filled in with today's date. Change the title, the cards and the photo name, write your notes, then press <strong>Commit changes</strong>.</p>
+    <div class="btn-row">
+      <a class="btn js-new" data-kind="daily" href="https://github.com/{{ site.github_repo }}/new/main/_posts" target="_blank" rel="noopener">New daily reading</a>
+      <a class="btn btn-quiet js-new" data-kind="challenge" href="https://github.com/{{ site.github_repo }}/new/main/_posts" target="_blank" rel="noopener">New challenge entry</a>
+    </div>
+    <p class="hint">Your site updates about a minute after you commit.</p>
+  </li>
+</ol>
+<script>window.JOURNAL_REPO = {{ site.github_repo | jsonify }};{% assign ch = site.challenges | sort: "date" | last %}window.JOURNAL_CHALLENGE = {{ ch.slug | default: "" | jsonify }};</script>

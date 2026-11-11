@@ -1,0 +1,13 @@
+---
+layout: default
+title: Tags
+section: tags
+---
+<div class="page-head">
+  <h1 class="page-title" id="cards-title">Tags</h1>
+  <p class="page-sub" id="cards-sub">Tap a tag to see every reading that has it</p>
+</div>
+<div class="card-index" id="card-index" data-kind="tags" aria-label="Tags"></div>
+<div class="feed" id="card-feed">
+{%- for r in site.posts -%}{% include reading-card.html reading=r %}{%- endfor -%}
+</div>

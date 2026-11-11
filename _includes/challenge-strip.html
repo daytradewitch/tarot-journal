@@ -1,0 +1,8 @@
+{%- assign ch = include.challenge -%}
+{%- assign entries = site.posts | where: "challenge", ch.slug -%}
+{%- assign total = ch.prompts | size -%}{%- assign done = 0 -%}
+{%- for p in ch.prompts -%}{%- assign hit = entries | where: "day", forloop.index | first -%}{%- if hit -%}{%- assign done = done | plus: 1 -%}{%- endif -%}{%- endfor -%}
+<a class="ch-strip" href="{{ ch.url | relative_url }}">
+  <span class="ch-strip-text"><span class="ch-strip-label">{{ ch.month }} challenge</span><span class="ch-strip-title">{{ ch.title }}</span></span>
+  <span class="progress small">{%- for p in ch.prompts -%}{%- assign hit = entries | where: "day", forloop.index | first -%}<span class="pip{% if hit %} on{% endif %}"></span>{%- endfor -%}<span class="progress-text">{{ done }}/{{ total }}</span></span>
+</a>

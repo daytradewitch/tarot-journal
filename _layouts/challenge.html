@@ -1,0 +1,32 @@
+---
+layout: default
+section: challenge
+---
+{%- assign entries = site.posts | where: "challenge", page.slug -%}
+{%- assign total = page.prompts | size -%}
+{%- assign done = 0 -%}
+{%- for p in page.prompts -%}{%- assign hit = entries | where: "day", forloop.index | first -%}{%- if hit -%}{%- assign done = done | plus: 1 -%}{%- endif -%}{%- endfor -%}
+<section class="challenge-head">
+  <p class="eyebrow"><a href="{{ '/challenges/' | relative_url }}">Monthly challenges</a> · {{ page.month }}</p>
+  <h1 class="reading-title">{{ page.title }}</h1>
+  <p class="lede">{{ page.description }}</p>
+  <div class="progress" role="img" aria-label="{{ done }} of {{ total }} prompts done">
+    {%- for p in page.prompts -%}{%- assign hit = entries | where: "day", forloop.index | first -%}<span class="pip{% if hit %} on{% endif %}"></span>{%- endfor -%}
+    <span class="progress-text">{{ done }} of {{ total }} done</span>
+  </div>
+</section>
+<ol class="prompts">
+{%- for p in page.prompts -%}
+  {%- assign hit = entries | where: "day", forloop.index | first -%}
+  <li class="prompt{% if hit %} is-done{% endif %}">
+    <span class="day">Day {{ forloop.index }}</span>
+    {%- if hit -%}
+    <a class="prompt-thumb" href="{{ hit.url | relative_url }}"><img src="{{ '/photos/' | append: hit.photo | relative_url }}" alt="" loading="lazy"></a>
+    <div class="prompt-text"><p class="prompt-q">{{ p }}</p><p class="prompt-ans"><a href="{{ hit.url | relative_url }}">{{ hit.title }}</a> · {{ hit.date | date: "%-d %b" }}</p></div>
+    {%- else -%}
+    <span class="prompt-thumb empty" aria-hidden="true">☾</span>
+    <div class="prompt-text"><p class="prompt-q">{{ p }}</p><p class="prompt-ans muted">Not done yet</p></div>
+    {%- endif -%}
+  </li>
+{%- endfor -%}
+</ol>

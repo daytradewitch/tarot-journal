@@ -1,0 +1,26 @@
+---
+layout: default
+title: Archive
+section: archive
+---
+<div class="page-head">
+  <h1 class="page-title">Archive</h1>
+  <p class="page-sub">By month</p>
+</div>
+{%- assign months = site.posts | group_by_exp: "p", "p.date | date: '%B %Y'" -%}
+{%- for m in months -%}
+<section class="month">
+  <h2 class="month-title">{{ m.name }} <span class="count">{{ m.items | size }}</span></h2>
+  <ul class="month-list">
+  {%- for r in m.items -%}
+    {%- assign cat = r.categories | first -%}
+    <li>
+      <time class="m-day" datetime="{{ r.date | date: '%Y-%m-%d' }}"><span>{{ r.date | date: "%-d" }}</span>{{ r.date | date: "%a" }}</time>
+      {%- if r.photo -%}<img class="m-thumb" src="{{ '/photos/' | append: r.photo | relative_url }}" alt="" loading="lazy">{%- endif -%}
+      <span class="m-text"><a href="{{ r.url | relative_url }}">{{ r.title }}</a><span class="m-cards">{% for item in r.cards %}{% if item.first %}{{ item.first[1] }}{% else %}{{ item }}{% endif %}{% unless forloop.last %} · {% endunless %}{% endfor %}</span></span>
+      <span class="badge badge-{{ cat }}">{% if r.challenge %}Day {{ r.day }}{% else %}{{ site.categories_info[cat].short }}{% endif %}</span>
+    </li>
+  {%- endfor -%}
+  </ul>
+</section>
+{%- endfor -%}

@@ -1,0 +1,18 @@
+{%- assign r = include.reading -%}
+{%- capture slugs -%}{%- for item in r.cards -%}{%- if item.first -%}{%- assign raw = item.first[1] -%}{%- else -%}{%- assign raw = item -%}{%- endif -%}{{ raw | replace: "(reversed)", "" | strip | slugify }} {% endfor -%}{%- endcapture -%}
+{%- assign cat = r.categories | first -%}
+{%- capture tslugs -%}{%- for t in r.tags -%}{{ t | slugify }} {% endfor -%}{%- endcapture -%}
+<article class="entry" data-cards=" {{ slugs | strip }} " data-tags=" {{ tslugs | strip }} ">
+  <a class="entry-photo" href="{{ r.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {%- if r.photo -%}<img src="{{ '/photos/' | append: r.photo | relative_url }}" alt="" loading="lazy" width="1200" height="900">{%- endif -%}
+  </a>
+  <div class="entry-body">
+    <div class="entry-meta">
+      <time datetime="{{ r.date | date: '%Y-%m-%d' }}">{{ r.date | date: "%a %-d %b" }}</time>
+      <span class="badge badge-{{ cat }}">{% if r.challenge %}Day {{ r.day }}{% else %}{{ site.categories_info[cat].short | default: cat }}{% endif %}</span>
+    </div>
+    <h2 class="entry-title"><a href="{{ r.url | relative_url }}">{{ r.title }}</a></h2>
+    <div class="chips">{% include card-list.html reading=r %}</div>
+    {%- if r.tags.size > 0 -%}<div class="tags">{% include tag-list.html reading=r %}</div>{%- endif -%}
+  </div>
+</article>
