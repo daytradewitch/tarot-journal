@@ -31,10 +31,6 @@ category: daily            # daily or challenge
 photo: IMG_4021.jpg        # name of the photo you uploaded
 question: How do I get through this week?
 tags: [work, stress]       # as many as you like
-cards:
-  - Past: Ten of Wands
-  - Present: The Moon (reversed)
-  - Future: Temperance
 ---
 Your notes go here.
 ```

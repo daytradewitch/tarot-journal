@@ -309,3 +309,5 @@ code { font-size: .9em; padding: 1px 5px; border-radius: 5px; background: color-
 .empty-text { color: var(--muted); margin: 0; }
 .empty-text a { color: var(--accent); }
 .prompt-theme { margin: 0 0 2px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.reading-grid.no-box { grid-template-columns: minmax(0, 1fr); }
+.question:last-child { margin-bottom: 0; }

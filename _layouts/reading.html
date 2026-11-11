@@ -18,14 +18,17 @@ layout: default
   {%- if page.photo -%}
   <figure class="reading-photo"><img src="{{ '/photos/' | append: page.photo | relative_url }}" alt="Photo of the spread for {{ page.title }}" width="1200" height="900"></figure>
   {%- endif -%}
-  <div class="reading-grid">
-    <aside class="spread-box">
+  {%- if page.question or page.cards.size > 0 or page.deck or page.tags.size > 0 -%}{%- assign has_box = true -%}{%- else -%}{%- assign has_box = false -%}{%- endif -%}
+  <div class="reading-grid{% unless has_box %} no-box{% endunless %}">
+    {%- if has_box -%}<aside class="spread-box">
       {%- if page.question -%}<p class="q-label">Question</p><p class="question">{{ page.question }}</p>{%- endif -%}
+      {%- if page.cards.size > 0 -%}
       <p class="q-label">{{ page.spread | default: "Cards" }}</p>
       <ol class="positions">{% include card-list.html reading=page style="full" %}</ol>
+      {%- endif -%}
       {%- if page.deck -%}<p class="deck">Deck: {{ page.deck }}</p>{%- endif -%}
-      {%- if page.tags.size > 0 -%}<p class="q-label tags-label">Tags</p><div class="tags">{% include tag-list.html reading=page %}</div>{%- endif -%}
-    </aside>
+      {%- if page.tags.size > 0 -%}<p class="q-label{% if page.question or page.cards.size > 0 %} tags-label{% endif %}">Tags</p><div class="tags">{% include tag-list.html reading=page %}</div>{%- endif -%}
+    </aside>{%- endif -%}
     <div class="notes">{{ content }}</div>
   </div>
   <nav class="pager">

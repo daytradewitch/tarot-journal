@@ -12,7 +12,7 @@
       <span class="badge badge-{{ cat }}">{% if r.challenge %}Day {{ r.day }}{% else %}{{ site.categories_info[cat].short | default: cat }}{% endif %}</span>
     </div>
     <h2 class="entry-title"><a href="{{ r.url | relative_url }}">{{ r.title }}</a></h2>
-    <div class="chips">{% include card-list.html reading=r %}</div>
+    {%- if r.cards.size > 0 -%}<div class="chips">{% include card-list.html reading=r %}</div>{%- endif -%}
     {%- if r.tags.size > 0 -%}<div class="tags">{% include tag-list.html reading=r %}</div>{%- endif -%}
   </div>
 </article>

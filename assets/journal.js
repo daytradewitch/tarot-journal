@@ -55,14 +55,11 @@
     var lines = ['---',
       'title: ' + (kind === 'challenge' ? 'Challenge prompt' : 'Today'),
       'category: ' + kind];
-    if (kind === 'challenge') lines.push('challenge: ' + (window.JOURNAL_CHALLENGE || 'challenge-name'), 'day: 5');
-    lines.push('photo: IMG_1234.jpg',
-      'question: What did you ask?',
+    if (kind === 'challenge') lines.push('challenge: ' + (window.JOURNAL_CHALLENGE || 'challenge-name'), 'day: ' + d.getDate());
+    lines.push('photo: IMG_1234.jpg');
+    if (kind !== 'challenge') lines.push('question: What did you ask?');
+    lines.push(
       'tags: [love, work]',
-      'cards:',
-      '  - Past: The Moon',
-      '  - Present: Two of Cups (reversed)',
-      '  - Future: The Star',
       '---',
       'Your notes go here.', '');
     var name = day + '-' + (kind === 'challenge' ? 'challenge' : 'reading') + '.md';
