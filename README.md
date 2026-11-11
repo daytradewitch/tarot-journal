@@ -29,7 +29,6 @@ A reading file looks like this:
 title: Heavy Monday
 category: daily            # daily or challenge
 photo: IMG_4021.jpg        # name of the photo you uploaded
-spread: Past · Present · Future
 question: How do I get through this week?
 tags: [work, stress]       # as many as you like
 cards:

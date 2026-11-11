@@ -57,7 +57,6 @@
       'category: ' + kind];
     if (kind === 'challenge') lines.push('challenge: ' + (window.JOURNAL_CHALLENGE || 'challenge-name'), 'day: 5');
     lines.push('photo: IMG_1234.jpg',
-      'spread: Past · Present · Future',
       'question: What did you ask?',
       'tags: [love, work]',
       'cards:',

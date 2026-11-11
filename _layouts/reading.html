@@ -21,7 +21,7 @@ layout: default
   <div class="reading-grid">
     <aside class="spread-box">
       {%- if page.question -%}<p class="q-label">Question</p><p class="question">{{ page.question }}</p>{%- endif -%}
-      <p class="q-label">{{ page.spread | default: "The cards" }}</p>
+      <p class="q-label">{{ page.spread | default: "Cards" }}</p>
       <ol class="positions">{% include card-list.html reading=page style="full" %}</ol>
       {%- if page.deck -%}<p class="deck">Deck: {{ page.deck }}</p>{%- endif -%}
       {%- if page.tags.size > 0 -%}<p class="q-label tags-label">Tags</p><div class="tags">{% include tag-list.html reading=page %}</div>{%- endif -%}

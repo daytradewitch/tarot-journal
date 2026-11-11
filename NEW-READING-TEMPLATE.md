@@ -2,7 +2,6 @@
 title: A short title for today
 category: daily            # daily  or  challenge
 photo: IMG_1234.jpg        # the name of the photo you uploaded to /photos
-spread: Past · Present · Future
 deck: Rider–Waite–Smith
 question: What did you ask?
 tags: [love, work]       # as many as you like
