@@ -37,7 +37,7 @@
         sub.innerHTML = (isTags ? 'Tagged on ' : 'Came up in ') + counts[s] + (counts[s] === 1 ? ' reading' : ' readings') + ' · <a href="#">show all ' + kind + '</a>';
       } else {
         title.textContent = isTags ? 'Tags' : 'Cards';
-        sub.textContent = isTags
+        sub.textContent = !slugs.length ? '' : isTags
           ? slugs.length + ' tags so far. Tap one to see every reading that has it.'
           : slugs.length + ' different cards so far. Tap one to see every reading it appeared in.';
       }

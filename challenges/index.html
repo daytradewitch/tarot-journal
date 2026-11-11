@@ -11,7 +11,7 @@ section: challenge
 {%- assign chs = site.challenges | reverse -%}
 {%- for ch in chs -%}{% include challenge-strip.html challenge=ch %}{%- endfor -%}
 </div>
-<h2 class="section-title">Latest challenge entries</h2>
+{%- if site.categories.challenge.size > 0 -%}<h2 class="section-title">Latest challenge entries</h2>{%- endif -%}
 <div class="feed">
 {%- for r in site.categories.challenge -%}{% include reading-card.html reading=r %}{%- endfor -%}
 </div>

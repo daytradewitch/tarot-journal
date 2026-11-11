@@ -8,6 +8,8 @@ section: cards
   <p class="page-sub" id="cards-sub">Tap a card to see every reading it appeared in</p>
 </div>
 <div class="card-index" id="card-index" data-kind="cards" aria-label="Cards drawn"></div>
+{%- assign list_ = site.posts -%}
+{%- if list_.size == 0 -%}{% include empty.html title="No cards yet" text="Every card you draw will be listed here." %}{%- endif -%}
 <div class="feed" id="card-feed">
 {%- for r in site.posts -%}{% include reading-card.html reading=r %}{%- endfor -%}
 </div>

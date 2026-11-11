@@ -4,10 +4,12 @@ section: all
 ---
 <div class="page-head">
   <h1 class="page-title">Every reading</h1>
-  <p class="page-sub">{{ site.posts | size }} entries, newest first</p>
+  <p class="page-sub">{% assign n = site.posts | size %}{% if n == 1 %}1 entry{% else %}{{ n }} entries{% endif %}, newest first</p>
 </div>
 {%- assign latest_ch = site.challenges | sort: "date" | last -%}
 {%- if latest_ch -%}{% include challenge-strip.html challenge=latest_ch %}{%- endif -%}
+{%- assign list_ = site.posts -%}
+{%- if list_.size == 0 -%}{% include empty.html %}{%- endif -%}
 <div class="feed">
 {%- for r in site.posts -%}{% include reading-card.html reading=r %}{%- endfor -%}
 </div>

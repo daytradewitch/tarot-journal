@@ -7,6 +7,8 @@ section: daily
   <h1 class="page-title">Daily readings</h1>
   <p class="page-sub">{{ site.categories.daily | size }} entries</p>
 </div>
+{%- assign list_ = site.categories.daily -%}
+{%- if list_.size == 0 -%}{% include empty.html text="Daily readings will show up here." %}{%- endif -%}
 <div class="feed">
 {%- for r in site.categories.daily -%}{% include reading-card.html reading=r %}{%- endfor -%}
 </div>

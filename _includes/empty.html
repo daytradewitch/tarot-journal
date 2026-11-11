@@ -1,0 +1,5 @@
+<div class="empty-state">
+  <p class="empty-mark" aria-hidden="true">{% if site.look == "island" %}✿{% else %}☾{% endif %}</p>
+  <p class="empty-title">{{ include.title | default: "No readings yet" }}</p>
+  <p class="empty-text">{{ include.text | default: "Your readings will show up here." }} <a href="{{ '/post/' | relative_url }}">Post your first reading</a>.</p>
+</div>

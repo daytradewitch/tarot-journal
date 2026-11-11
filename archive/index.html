@@ -7,6 +7,7 @@ section: archive
   <h1 class="page-title">Archive</h1>
   <p class="page-sub">By month</p>
 </div>
+{%- if site.posts.size == 0 -%}{% include empty.html text="Your readings will be grouped by month here." %}{%- endif -%}
 {%- assign months = site.posts | group_by_exp: "p", "p.date | date: '%B %Y'" -%}
 {%- for m in months -%}
 <section class="month">
